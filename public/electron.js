@@ -2,6 +2,7 @@ const path = require("path");
 // inoder to load the web pages into the application window we need these two modules of electron
 const { app, BrowserWindow } = require("electron");
 const ipc = require("electron").ipcMain;
+
 var mainWindow = null;
 
 const isDev = require("electron-is-dev");
@@ -48,13 +49,13 @@ function createWindow() {
   );
 }
 
+ipc.on("open-project", (e) => {
+  console.log("button pressed");
+});
+
 // // the createWindow function will be called when the applciation becomes ready
 // app.whenReady().then(() => {
 //   createWindow();
-// });
-
-// ipc.on("open-project", (e) => {
-//   console.log("button pressed");
 // });
 
 // Quit the application when all the windows are closed(except macOS)
